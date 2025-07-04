@@ -7,6 +7,7 @@ export default function TextForm(props) {
     console.log("Uppercase button clicked"+ text);
     let newText = text.toUpperCase();
     setText(newText);
+      props.showAlert("Text converted to uppercase!", "success");
     
   };
   
@@ -14,6 +15,7 @@ export default function TextForm(props) {
     console.log("lowercase button clicked"+ text);
     let newText = text.toLowerCase();
     setText(newText);
+           props.showAlert("Text converted to lowercase!", "success");
     
   };
     const handleclearClick = () => {
@@ -28,6 +30,7 @@ export default function TextForm(props) {
       newText += text[i];
     }
     setText(newText);
+           props.showAlert("Text inversed!", "success");
   };
 
 
