@@ -13,7 +13,7 @@ function App() {
       msg: message,
       type: type
     });
-
+// account updated in github
     // Optional: auto-dismiss alert after 2 seconds
     setTimeout(() => {
       setAlert(null);
