@@ -3,18 +3,23 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm';
 import Alert from './Components/Alert';
+import About from './Components/About';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState('light');
-  const [alert, setAlert] = useState(null); // <-- fix typo here
+  const [alert, setAlert] = useState(null);
 
   const showAlert = (message, type) => {
     setAlert({
       msg: message,
       type: type
     });
-// account updated in github
-    // Optional: auto-dismiss alert after 2 seconds
+
     setTimeout(() => {
       setAlert(null);
     }, 2000);
@@ -33,13 +38,18 @@ function App() {
   };
 
   return (
-    <>
+    <Router>
       <Navbar Title="TextUtils" About="About TextUtils" mode={mode} toggleMode={toggleMode} />
-      <Alert alert={alert} /> {/* fix: pass the alert object */}
-      <div className="container">
-        <TextForm heading="Enter your text to analyze:-" mode={mode} showAlert={showAlert} />
-      </div>
-    </>
+      <Alert alert={alert} />
+      <Routes>
+        <Route path="/about" element={<About />} />
+        <Route path="/" element={
+          <div className="container">
+            <TextForm heading="Enter your text to analyze:-" mode={mode} showAlert={showAlert} />
+          </div>
+        } />
+      </Routes>
+    </Router>
   );
 }
 
