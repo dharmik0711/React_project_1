@@ -53,23 +53,27 @@ export default function TextForm(props) {
           rows="8">
         </textarea>
       </div>
-      <button className="btn btn-primary mx-1" onClick={handleUpClick}>
-        Convert to uppercase
-      </button>  
-         <button className="btn btn-primary mx-2" onClick={handlelowClick}>
-        Convert to lowercase
-      </button>
-         <button className="btn btn-primary mx-2" onClick={handleclearClick}>
-        Clear text
-      </button>
-           <button className="btn btn-primary mx-2" onClick={handleinverseClick}>
-        inverse text
-      </button>
+<button disabled={text.length === 0} className="btn btn-primary my-1 mx-1" onClick={handleUpClick}>
+  Convert to uppercase
+</button>
+
+<button disabled={text.length === 0} className="btn btn-primary my-1 mx-2" onClick={handlelowClick}>
+  Convert to lowercase
+</button>
+
+<button disabled={text.length === 0} className="btn btn-primary my-1 mx-2" onClick={handleclearClick}>
+  Clear text
+</button>
+
+<button disabled={text.length === 0} className="btn btn-primary my-1 mx-2" onClick={handleinverseClick}>
+  Inverse text
+</button>
+
 
     <div className='container my-2'>
 <h1>your text here </h1>
 <p>your text summary </p>
-<p>{text.split(" ").length} words and {text.length} characters</p>
+<p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
 <p>{0.008 * text.split(" ").length} Minutes to read</p>
 <h2>Preview</h2>
 <p>{text.length>0?text:"Enter your text to preview it here"}</p>    </div>
@@ -78,3 +82,4 @@ export default function TextForm(props) {
 
   );
 }
+// {text.split(" ").filter((element)=>{return element.length!=0}).length} words and {text.length   using hthid element we can make sure that blank spaces are nt counted
